@@ -6,7 +6,7 @@ begin
 
   namespace :knapsack do
     RSpec::Core::RakeTask.new(:rspec_run) do |t|
-      t.test_files = ENV['KNAPSACK_RSPEC_TEST_FILES'].to_s.split(' ')
+      t.pattern = ENV['KNAPSACK_RSPEC_TEST_FILES'].to_s.split(' ').join(',')
     end
 
     task :rspec, [:rspec_args] => 'ci:setup:rspec' do |_, args|
